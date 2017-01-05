@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SmartHome.Components.Interfaces;
+﻿using SmartHome.Components.Interfaces;
 
 namespace SmartHome.Components.Components
 {
-    public abstract class Component : IComponent, IThing
+    public abstract class Component : IComponent
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public string Location { get; set; }
+        public Component(string name)
+        {
+            this.Name = name;
+        }
     }
 }

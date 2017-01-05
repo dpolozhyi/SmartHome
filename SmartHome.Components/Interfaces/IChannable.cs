@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SmartHome.Components.Interfaces
 {
@@ -12,6 +8,10 @@ namespace SmartHome.Components.Interfaces
 
         void PreviousChannel();
 
+        bool SetChannel(string channel);
+
         string GetCurrentChannel();
+
+        IEnumerable<string> GetChannelsList();
     }
 }

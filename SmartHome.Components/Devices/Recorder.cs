@@ -3,10 +3,11 @@ using SmartHome.Components.Interfaces;
 
 namespace SmartHome.Components.Devices
 {
-    public class Alarm : AudioComponent
+    public class Recorder : AudioComponent
     {
-        public Alarm(string name, string location, ISwitchable switcher, ISoundable volumer):base(name, location, switcher, volumer)
+        public Recorder(string name, string location, ISwitchable switcher, ISoundable volumer) : base(name, location, switcher, volumer)
         {
+
         }
 
         public void TurnOn()
@@ -22,6 +23,16 @@ namespace SmartHome.Components.Devices
         public bool IsOn()
         {
             return Switcher.IsOn();
+        }
+
+        public void VolumeUp()
+        {
+            Volumer.VolumeUp();
+        }
+
+        public void VolumeDown()
+        {
+            Volumer.VolumeDown();
         }
     }
 }

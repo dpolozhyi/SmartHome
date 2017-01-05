@@ -1,29 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SmartHome.Components.Interfaces;
+﻿using SmartHome.Components.Interfaces;
 
 namespace SmartHome.Components.Components
 {
     public class Switcher : ISwitchable
     {
-        protected bool condition;
+        protected bool Condition { get; set; }
 
         public void SwitchOn()
         {
-            this.condition = true;
+            this.Condition = true;
         }
 
         public void SwitchOff()
         {
-            this.condition = false;
+            this.Condition = false;
         }
 
         public bool IsOn()
         {
-            return this.condition;
+            return this.Condition;
         }
     }
 }

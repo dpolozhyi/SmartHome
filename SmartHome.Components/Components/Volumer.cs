@@ -1,35 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SmartHome.Components.Interfaces;
+﻿using SmartHome.Components.Interfaces;
 
 namespace SmartHome.Components.Components
 {
     public class Volumer : ISoundable
     {
-        protected int volume;
+        protected int Volume { get; set; }
 
         public void VolumeUp()
         {
-            if(this.volume<100)
+            if(this.Volume<100)
             {
-                this.volume++;
+                this.Volume++;
             }
         }
 
         public void VolumeDown()
         {
-            if(this.volume>0)
+            if(this.Volume>0)
             {
-                this.volume--;
+                this.Volume--;
+            }
+        }
+
+        public bool SetVolume(int volume)
+        {
+            if(volume>=1 && volume<=100)
+            {
+                this.Volume = volume;
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
         public int GetCurrentVolume()
         {
-            return this.volume;
+            return this.Volume;
         }
     }
 }

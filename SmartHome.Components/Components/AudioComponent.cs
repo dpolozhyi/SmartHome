@@ -1,57 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SmartHome.Components.Interfaces;
+﻿using SmartHome.Components.Interfaces;
 
 namespace SmartHome.Components.Components
 {
-    public abstract class AudioComponent : Component
+    public abstract class AudioComponent : Component, IThing
     {
-        ISwitchable switcher;
+        protected ISwitchable Switcher { get; private set; }
 
-        ISoundable volumer;
+        protected ISoundable Volumer { get; private set; }
 
-        public AudioComponent(ISwitchable switcher, ISoundable volumer)
+        public string Location { get; set; }
+
+        public AudioComponent(string name, string location, ISwitchable switcher, ISoundable volumer):base(name)
         {
-
-        }
-
-        public void SwitchOn()
-        {
-            this.condition = true;
-        }
-
-        public void SwitchOff()
-        {
-            this.condition = false;
-        }
-
-        public bool IsOn()
-        {
-            return this.condition;
-        }
-
-        public void VolumeUp()
-        {
-            if (this.volume < 100)
-            {
-                this.volume++;
-            }
-        }
-
-        public void VolumeDown()
-        {
-            if (this.volume > 0)
-            {
-                this.volume--;
-            }
-        }
-
-        public int GetCurrentVolume()
-        {
-            return volume;
+            this.Switcher = switcher;
+            this.Volumer = volumer;
+            this.Location = location;
         }
     }
 }

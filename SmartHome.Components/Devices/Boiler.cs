@@ -3,10 +3,11 @@ using SmartHome.Components.Interfaces;
 
 namespace SmartHome.Components.Devices
 {
-    public class Alarm : AudioComponent
+    public class Boiler : HeatComponent
     {
-        public Alarm(string name, string location, ISwitchable switcher, ISoundable volumer):base(name, location, switcher, volumer)
+        public Boiler(string name, string location, ISwitchable switcher, IHeatable heater) : base(name, location, switcher, heater)
         {
+
         }
 
         public void TurnOn()

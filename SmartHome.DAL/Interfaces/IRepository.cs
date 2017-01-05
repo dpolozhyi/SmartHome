@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SmartHome.Components.Interfaces;
 
-namespace SmartHome.Components.Components
+namespace SmartHome.DAL.Interfaces
 {
-    public abstract class VideoComponent: Component,
+    public interface IRepository<T> where T : class
     {
+        IEnumerable<T> Get();
     }
 }
