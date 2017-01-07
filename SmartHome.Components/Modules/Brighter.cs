@@ -1,10 +1,11 @@
-﻿using SmartHome.Components.Interfaces;
+﻿using MongoDB.Bson;
+using SmartHome.Components.Interfaces;
 
-namespace SmartHome.Components.Components
+namespace SmartHome.Components.Modules
 {
     public class Brighter : IBrightable, IEntity
     {
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
 
         private int Brightness { get; set; }
 

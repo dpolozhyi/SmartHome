@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SmartHome.Components.Interfaces;
+using MongoDB.Bson;
 
-namespace SmartHome.Components.Components
+namespace SmartHome.Components.Modules
 {
     public class Channeler : IChannable, IEntity
     {
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
 
-        private int currentChannel;
+        private int CurrentChannel { get; set; }
 
         protected ICollection<string> Channels { get; set; }
 
@@ -24,17 +25,17 @@ namespace SmartHome.Components.Components
 
         public void NextChannel()
         {
-            if(this.currentChannel < this.Channels.Count-1)
+            if(this.CurrentChannel < this.Channels.Count-1)
             {
-                this.currentChannel++;
+                this.CurrentChannel++;
             }
         }
 
         public void PreviousChannel()
         {
-            if (this.currentChannel > 0)
+            if (this.CurrentChannel > 0)
             {
-                this.currentChannel--;
+                this.CurrentChannel--;
             }
         }
 
@@ -42,7 +43,7 @@ namespace SmartHome.Components.Components
         {
             if(this.Channels.Contains(channel))
             {
-                this.currentChannel = this.Channels.ToList().IndexOf(channel);
+                this.CurrentChannel = this.Channels.ToList().IndexOf(channel);
                 return true;
             }
             else
@@ -53,7 +54,7 @@ namespace SmartHome.Components.Components
 
         public string GetCurrentChannel()
         {
-            return this.Channels.ToList()[currentChannel];
+            return this.Channels.ToList()[CurrentChannel];
         }
 
         public IEnumerable<string> GetChannelsList()

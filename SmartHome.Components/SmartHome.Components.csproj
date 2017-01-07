@@ -30,12 +30,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MongoDB.Bson, Version=2.4.1.18, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.4.1\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.4.1.18, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.4.1\lib\net45\MongoDB.Driver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.4.1.18, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.4.1\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,18 +60,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adapters\SoundableAdapter.cs" />
-    <Compile Include="Adapters\SwitchableAdapter.cs" />
-    <Compile Include="Components\Channeler.cs" />
-    <Compile Include="Components\Brighter.cs" />
+    <Compile Include="Modules\Channeler.cs" />
+    <Compile Include="Modules\Brighter.cs" />
     <Compile Include="Components\HeatComponent.cs" />
-    <Compile Include="Components\Heater.cs" />
+    <Compile Include="Modules\Heater.cs" />
     <Compile Include="Components\MediaComponent.cs" />
-    <Compile Include="Components\Volumer.cs" />
+    <Compile Include="Modules\Volumer.cs" />
     <Compile Include="Devices\Alarm.cs" />
     <Compile Include="Components\AudioComponent.cs" />
     <Compile Include="Components\Component.cs" />
-    <Compile Include="Components\Switcher.cs" />
+    <Compile Include="Modules\Switcher.cs" />
     <Compile Include="Devices\Boiler.cs" />
     <Compile Include="Devices\Recorder.cs" />
     <Compile Include="Devices\TV.cs" />
@@ -63,6 +77,7 @@
     <Compile Include="Interfaces\IChannable.cs" />
     <Compile Include="Interfaces\IColdable.cs" />
     <Compile Include="Interfaces\IComponent.cs" />
+    <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\IHeatable.cs" />
     <Compile Include="Interfaces\IOpenable.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />

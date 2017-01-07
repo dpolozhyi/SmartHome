@@ -8,7 +8,7 @@ namespace SmartHome.Components.Devices
 {
     public class TV : MediaComponent
     {
-        [Obsolete("Only needed for EntityFramework", true)]
+        [Obsolete("Only needed for deserialization", true)]
         public TV():base("","", null, null, null, null)
         {
 

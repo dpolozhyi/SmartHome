@@ -6,7 +6,7 @@ namespace SmartHome.Components.Devices
 {
     public class Alarm : AudioComponent
     {
-        [Obsolete("Only needed for EntityFramework", true)]
+        [Obsolete("Only needed for deserialization", true)]
         public Alarm() : base("", "", null, null)
         {
 

@@ -1,10 +1,11 @@
-﻿using SmartHome.Components.Interfaces;
+﻿using MongoDB.Bson;
+using SmartHome.Components.Interfaces;
 
-namespace SmartHome.Components.Components
+namespace SmartHome.Components.Modules
 {
     public class Volumer : ISoundable, IEntity
     {
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
 
         private int Volume { get; set; }
 
@@ -12,7 +13,7 @@ namespace SmartHome.Components.Components
 
         private int MaxVolume { get; set; }
 
-        public Volumer(int minVolume, int maxVolume)
+        public Volumer(int minVolume = 0, int maxVolume = 100)
         {
             if (minVolume < maxVolume)
             {

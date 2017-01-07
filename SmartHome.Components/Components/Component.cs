@@ -1,10 +1,11 @@
-﻿using SmartHome.Components.Interfaces;
+﻿using MongoDB.Bson;
+using SmartHome.Components.Interfaces;
 
 namespace SmartHome.Components.Components
 {
-    public abstract class Component : IComponent
+    public abstract class Component : IComponent, IEntity
     {
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
 
         public string Name { get; set; }
 

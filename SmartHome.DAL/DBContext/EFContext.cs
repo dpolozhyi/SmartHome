@@ -1,6 +1,4 @@
 ﻿using System.Data.Entity;
-using SmartHome.Components.Adapters;
-using SmartHome.Components.Components;
 using SmartHome.Components.Devices;
 using SmartHome.Components.Interfaces;
 using System.Configuration;
@@ -13,10 +11,6 @@ namespace SmartHome.DAL.DBContext
         {
             Database.SetInitializer(new EFContextInitializer());
         }
-
-        public DbSet<SwitchableAdapter> SwitchableAdapters { get; set; }
-
-        public DbSet<SoundableAdapter> SoundableAdapters { get; set; }
 
         public DbSet<Alarm> Alarms { get; set; }
 

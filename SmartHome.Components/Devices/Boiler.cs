@@ -6,7 +6,7 @@ namespace SmartHome.Components.Devices
 {
     public class Boiler : HeatComponent
     {
-        [Obsolete("Only needed for EntityFramework", true)]
+        [Obsolete("Only needed for deserialization", true)]
         public Boiler() : base("","",null,null)
         {
 

@@ -1,10 +1,11 @@
-﻿using SmartHome.Components.Interfaces;
+﻿using MongoDB.Bson;
+using SmartHome.Components.Interfaces;
 
-namespace SmartHome.Components.Components
+namespace SmartHome.Components.Modules
 {
     public class Heater : IHeatable, IEntity
     {
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
 
         private int Temperature { get; set; }
 
@@ -12,7 +13,7 @@ namespace SmartHome.Components.Components
 
         private int MaxTemperature { get; set; }
 
-        public Heater(int minTemperature, int maxTemperature)
+        public Heater(int minTemperature = 30, int maxTemperature = 60)
         {
             if (minTemperature < maxTemperature)
             {
@@ -22,7 +23,7 @@ namespace SmartHome.Components.Components
                 }
                 else
                 {
-                    this.MinTemperature = 0;
+                    this.MinTemperature = 30;
                 }
 
                 if (maxTemperature <= 100)
@@ -36,7 +37,7 @@ namespace SmartHome.Components.Components
             }
             else
             {
-                this.MinTemperature = 0;
+                this.MinTemperature = 30;
                 this.MaxTemperature = 60;
             }
         }

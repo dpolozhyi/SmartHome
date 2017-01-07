@@ -6,7 +6,7 @@ namespace SmartHome.Components.Devices
 {
     public class Recorder : AudioComponent
     {
-        [Obsolete("Only needed for EntityFramework", true)]
+        [Obsolete("Only needed for deserialization", true)]
         public Recorder() : base("","",null,null)
         {
 
