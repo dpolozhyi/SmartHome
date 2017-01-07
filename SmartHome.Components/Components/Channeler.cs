@@ -4,15 +4,17 @@ using SmartHome.Components.Interfaces;
 
 namespace SmartHome.Components.Components
 {
-    public class Channeler : IChannable
+    public class Channeler : IChannable, IEntity
     {
+        public int Id { get; set; }
+
         private int currentChannel;
 
         protected ICollection<string> Channels { get; set; }
 
         public Channeler()
         {
-            this.Channels = new List<string>() { "Pershiy", "1+1", "Noviy" };
+            
         }
 
         public Channeler(ICollection<string> channels)

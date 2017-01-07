@@ -16,30 +16,5 @@ namespace SmartHome.Components.Devices
         {
 
         }
-
-        public void TurnOn()
-        {
-            Switcher.SwitchOn();
-        }
-
-        public void TurnOff()
-        {
-            Switcher.SwitchOff();
-        }
-
-        public bool IsOn()
-        {
-            return Switcher.IsOn();
-        }
-
-        public void VolumeUp()
-        {
-            Volumer.VolumeUp();
-        }
-
-        public void VolumeDown()
-        {
-            Volumer.VolumeDown();
-        }
     }
 }

@@ -4,9 +4,9 @@ namespace SmartHome.Components.Components
 {
     public abstract class HeatComponent : Component, IThing 
     {
-        protected ISwitchable Switcher { get; set; }
+        public ISwitchable Switcher { get; set; }
 
-        protected IHeatable Heater { get; set; }
+        public IHeatable Heater { get; set; }
 
         public string Location { get; set; }
 

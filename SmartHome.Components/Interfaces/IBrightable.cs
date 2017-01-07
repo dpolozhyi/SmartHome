@@ -5,5 +5,7 @@
         void BrightnessUp();
 
         void BrightnessDown();
+
+        bool SetBrightness(int brightness);
     }
 }

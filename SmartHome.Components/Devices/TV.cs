@@ -18,40 +18,5 @@ namespace SmartHome.Components.Devices
         {
             
         }
-
-        public void TurnOn()
-        {
-            Switcher.SwitchOn();
-        }
-
-        public void TurnOff()
-        {
-            Switcher.SwitchOff();
-        }
-
-        public bool IsOn()
-        {
-            return Switcher.IsOn();
-        }
-
-        public bool SetChannel(string channel)
-        {
-            return Channeler.SetChannel(channel);
-        }
-
-        public string GetCurrentChannel()
-        {
-            return Channeler.GetCurrentChannel();
-        }
-
-        public IList<string> GetChannelList()
-        {
-            return Channeler.GetChannelsList().ToList();
-        }
-
-        public void NextChannel()
-        {
-            Channeler.NextChannel();
-        }
     }
 }

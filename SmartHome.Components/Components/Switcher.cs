@@ -2,8 +2,10 @@
 
 namespace SmartHome.Components.Components
 {
-    public class Switcher : ISwitchable
+    public class Switcher : ISwitchable, IEntity
     {
+        public int Id { get; set; }
+
         protected bool Condition { get; set; }
 
         public void SwitchOn()

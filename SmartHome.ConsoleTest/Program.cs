@@ -36,6 +36,9 @@ namespace SmartHome.ConsoleTest
             alarm.Switcher = repo1.Get().Select(i => i.Switcher).First();
             alarm.Volumer = repo2.Get().Select(i => i.Volumer).First();
             Console.WriteLine();
+
+            DeviceFactory<Boiler> bfactory = new DeviceFactory<Boiler>(kernel);
+            Boiler b = bfactory.Create("MyBoiler", "Bath");
             /*repo.Insert(newTV);
             repo.Save();*/
             /*TV yolotv = repo.Get().OfType<TV>().First();

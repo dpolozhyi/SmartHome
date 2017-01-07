@@ -2,9 +2,44 @@
 
 namespace SmartHome.Components.Components
 {
-    public class Volumer : ISoundable
+    public class Volumer : ISoundable, IEntity
     {
-        protected int Volume { get; set; }
+        public int Id { get; set; }
+
+        private int Volume { get; set; }
+
+        private int MinVolume { get; set; }
+
+        private int MaxVolume { get; set; }
+
+        public Volumer(int minVolume, int maxVolume)
+        {
+            if (minVolume < maxVolume)
+            {
+                if (minVolume >= 0)
+                {
+                    this.MinVolume = minVolume;
+                }
+                else
+                {
+                    this.MinVolume = 0;
+                }
+
+                if (maxVolume <= 160)
+                {
+                    this.MaxVolume = maxVolume;
+                }
+                else
+                {
+                    this.MaxVolume = 100;
+                }
+            }
+            else
+            {
+                this.MinVolume = 0;
+                this.MaxVolume = 100;
+            }
+        }
 
         public void VolumeUp()
         {
@@ -24,7 +59,7 @@ namespace SmartHome.Components.Components
 
         public bool SetVolume(int volume)
         {
-            if(volume>=1 && volume<=100)
+            if(volume>=this.MinVolume && volume<=this.MaxVolume)
             {
                 this.Volume = volume;
                 return true;
