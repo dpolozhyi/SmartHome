@@ -9,5 +9,13 @@ namespace SmartHome.DAL.Interfaces
     public interface IRepository<T> where T : class
     {
         IEnumerable<T> Get();
+
+        void Insert(T entity);
+
+        void Update(T entity);
+
+        void Delete(int id);
+
+        void Save();
     }
 }

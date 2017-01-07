@@ -3,7 +3,7 @@ using Ninject.Parameters;
 using SmartHome.BL.Interfaces;
 using SmartHome.Components.Components;
 
-namespace SmartHome.Components.ClassFactory
+namespace SmartHome.BL.ClassFactories
 {
     public class DeviceFactory<T> : IDeviceFactory<T> where T : Component
     {

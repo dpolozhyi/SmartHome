@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C5A2957D-8E2E-4E0A-B5C1-B18E72B29B40}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{19BFC755-5E73-444D-B2BD-421D7666A8EE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmartHome.Components</RootNamespace>
-    <AssemblyName>SmartHome.Components</AssemblyName>
+    <RootNamespace>SmartHome.ConsoleTest</RootNamespace>
+    <AssemblyName>SmartHome.ConsoleTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,11 +33,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,34 +56,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adapters\SoundableAdapter.cs" />
-    <Compile Include="Adapters\SwitchableAdapter.cs" />
-    <Compile Include="Components\Channeler.cs" />
-    <Compile Include="Components\Brighter.cs" />
-    <Compile Include="Components\HeatComponent.cs" />
-    <Compile Include="Components\Heater.cs" />
-    <Compile Include="Components\MediaComponent.cs" />
-    <Compile Include="Components\Volumer.cs" />
-    <Compile Include="Devices\Alarm.cs" />
-    <Compile Include="Components\AudioComponent.cs" />
-    <Compile Include="Components\Component.cs" />
-    <Compile Include="Components\Switcher.cs" />
-    <Compile Include="Devices\Boiler.cs" />
-    <Compile Include="Devices\Recorder.cs" />
-    <Compile Include="Devices\TV.cs" />
-    <Compile Include="Interfaces\IBrightable.cs" />
-    <Compile Include="Interfaces\IChannable.cs" />
-    <Compile Include="Interfaces\IColdable.cs" />
-    <Compile Include="Interfaces\IComponent.cs" />
-    <Compile Include="Interfaces\IHeatable.cs" />
-    <Compile Include="Interfaces\IOpenable.cs" />
-    <Compile Include="Interfaces\ISoundable.cs" />
-    <Compile Include="Interfaces\ISwitchable.cs" />
-    <Compile Include="Interfaces\IThing.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SmartHome.BL\SmartHome.BL.csproj">
+      <Project>{8bb29608-3c84-45c9-a0b0-1d640e172657}</Project>
+      <Name>SmartHome.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartHome.Components\SmartHome.Components.csproj">
+      <Project>{c5a2957d-8e2e-4e0a-b5c1-b18e72b29b40}</Project>
+      <Name>SmartHome.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartHome.DAL\SmartHome.DAL.csproj">
+      <Project>{7021f187-1899-4838-940a-72077e5f65ce}</Project>
+      <Name>SmartHome.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,7 +2,7 @@
 using SmartHome.Components.Interfaces;
 using SmartHome.Components.Components;
 
-namespace SmartHome.ConsoleTest
+namespace SmartHome.BL.NinjectModules
 {
     public class ComponentNinjectModule : NinjectModule
     {

@@ -4,13 +4,13 @@ namespace SmartHome.Components.Components
 {
     public abstract class MediaComponent : Component, IThing
     {
-        protected ISwitchable Switcher { get; set; }
+        public ISwitchable Switcher { get; set; }
 
-        protected ISoundable Volumer { get; set; }
+        public ISoundable Volumer { get; set; }
 
-        protected IBrightable Brighter { get; set; }
+        public IBrightable Brighter { get; set; }
 
-        protected IChannable Channeler { get; set; }
+        public IChannable Channeler { get; set; }
 
         public string Location { get; set; }
 
