@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartHome.BL.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,8 @@ namespace SmartHome.WEB.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            BoilerService bs = new BoilerService();
+            return View(bs.GetAll());
         }
 
         public ActionResult About()

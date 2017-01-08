@@ -1,11 +1,11 @@
-﻿using MongoDB.Bson;
-using SmartHome.Components.Interfaces;
+﻿using SmartHome.Components.Interfaces;
+using System;
 
 namespace SmartHome.Components.Modules
 {
     public class Volumer : ISoundable, IEntity
     {
-        public ObjectId Id { get; set; }
+        public Guid Id { get; set; }
 
         private int Volume { get; set; }
 

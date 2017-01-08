@@ -1,9 +1,9 @@
-﻿using MongoDB.Bson;
+﻿using System;
 
 namespace SmartHome.Components.Interfaces
 {
     public interface IEntity
     {
-        ObjectId Id { get; set; }
+        Guid Id { get; set; }
     }
 }

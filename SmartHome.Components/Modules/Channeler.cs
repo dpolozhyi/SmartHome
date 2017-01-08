@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SmartHome.Components.Interfaces;
-using MongoDB.Bson;
+using System;
 
 namespace SmartHome.Components.Modules
 {
     public class Channeler : IChannable, IEntity
     {
-        public ObjectId Id { get; set; }
+        public Guid Id { get; set; }
 
         private int CurrentChannel { get; set; }
 

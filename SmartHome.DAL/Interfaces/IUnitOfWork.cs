@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartHome.BL.Services
+namespace SmartHome.DAL.Interfaces
 {
-    public class TVService
+    public interface IUnitOfWork
     {
-
+        IRepository<T> GetRepository<T>() where T : class;
     }
 }

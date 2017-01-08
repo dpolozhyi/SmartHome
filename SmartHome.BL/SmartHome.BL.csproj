@@ -45,15 +45,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassFactories\DeviceFactory.cs" />
+    <Compile Include="DTO\BoilerViewModel.cs" />
     <Compile Include="Interfaces\IDeviceFactory.cs" />
     <Compile Include="NinjectModules\ComponentNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\TVService.cs" />
+    <Compile Include="Services\BoilerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SmartHome.Components\SmartHome.Components.csproj">
       <Project>{c5a2957d-8e2e-4e0a-b5c1-b18e72b29b40}</Project>
       <Name>SmartHome.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartHome.DAL\SmartHome.DAL.csproj">
+      <Project>{7021F187-1899-4838-940A-72077E5F65CE}</Project>
+      <Name>SmartHome.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

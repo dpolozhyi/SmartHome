@@ -1,11 +1,11 @@
-﻿using MongoDB.Bson;
-using SmartHome.Components.Interfaces;
+﻿using SmartHome.Components.Interfaces;
+using System;
 
 namespace SmartHome.Components.Modules
 {
     public class Switcher : ISwitchable, IEntity
     {
-        public ObjectId Id { get; set; }
+        public Guid Id { get; set; }
 
         protected bool Condition { get; set; }
 

@@ -1,11 +1,11 @@
-﻿using MongoDB.Bson;
-using SmartHome.Components.Interfaces;
+﻿using SmartHome.Components.Interfaces;
+using System;
 
 namespace SmartHome.Components.Modules
 {
     public class Brighter : IBrightable, IEntity
     {
-        public ObjectId Id { get; set; }
+        public Guid Id { get; set; }
 
         private int Brightness { get; set; }
 
@@ -13,7 +13,7 @@ namespace SmartHome.Components.Modules
 
         private int MaxBrightness { get; set; }
 
-        public Brighter(int minBrightness, int maxBrightness)
+        public Brighter(int minBrightness = 0, int maxBrightness = 100)
         {
             if (minBrightness < maxBrightness)
             {
@@ -59,7 +59,7 @@ namespace SmartHome.Components.Modules
 
         public bool SetBrightness(int brightness)
         {
-            if (brightness>=this.MinBrightness && brightness<=this.MaxBrightness)
+            if (brightness >= this.MinBrightness && brightness <= this.MaxBrightness)
             {
                 this.Brightness = brightness;
                 return true;

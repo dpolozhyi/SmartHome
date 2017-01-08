@@ -1,4 +1,16 @@
-﻿@{
+﻿@model List<SmartHome.BL.DTO.BoilerViewModel>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
+@foreach(var b in Model)
+{
+    <p>
+        @b.Id,
+        @b.Condition,
+        @b.Name,
+        @b.Location,
+        @b.Temperature
+    </p>
+}

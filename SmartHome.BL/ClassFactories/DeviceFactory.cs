@@ -5,7 +5,7 @@ using SmartHome.Components.Components;
 
 namespace SmartHome.BL.ClassFactories
 {
-    public class DeviceFactory<T> : IDeviceFactory<T> where T : Component
+    public class DeviceFactory : IDeviceFactory
     {
         private readonly IKernel kernel;
 
@@ -14,7 +14,7 @@ namespace SmartHome.BL.ClassFactories
             this.kernel = kernel;
         }
 
-        public T Create(string name, string location)
+        public T Create<T>(string name, string location) where T : Component
         {
             return kernel.Get<T>(new ConstructorArgument("name", name), new ConstructorArgument("location", location));
         }
