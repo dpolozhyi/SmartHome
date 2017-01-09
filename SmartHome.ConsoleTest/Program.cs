@@ -34,17 +34,21 @@ namespace SmartHome.ConsoleTest
             Boiler b2 = factory.Create<Boiler>("MyNewMiniBoiler", "Kitchen");
             TV newTV = factory.Create<TV>("BrandNewTv", "Hall");
             Alarm a = factory.Create<Alarm>("NewAlarm", "InDoor");
+            Alarm a2 = factory.Create<Alarm>("BrandNewAlarm", "BackDoor");
+            Recorder rec = factory.Create<Recorder>("CoolNewRecored", "PlayRoom");
             /*unit.GetRepository<Boiler>().Insert(b);
             unit.GetRepository<Boiler>().Insert(b2);
             unit.GetRepository<TV>().Insert(newTV);
             unit.GetRepository<Alarm>().Insert(a);*/
+            /*unit.GetRepository<Alarm>().Insert(a2);
+            unit.GetRepository<Recorder>().Insert(rec);*/
             Random rnd = new Random();
-            List<Boiler> blist = unit.GetRepository<Boiler>().Get().ToList();
+            List<AudioComponent> blist = unit.GetRepository<AudioComponent>().Get().ToList();
             foreach (var bo in blist)
             {
                 /*bo.Heater.SetTemperature(rnd.Next(35, 100));
                 unit.GetRepository<Boiler>().Update(bo, bo.Id);*/
-                Console.WriteLine("Id={0}\nName={1}\nTemp={2}\n",bo.Id,bo.Name,bo.Heater.GetCurrentTemperature());
+                Console.WriteLine("Type={3}\nId={0}\nName={1}\nVolume={2}\n",bo.Id,bo.Name,bo.Volumer.GetCurrentVolume(), bo.GetType().Name);
             }
             /*List<Boiler> kb = blist.Where(n => n.Location == "Kitchen").Select(n => n).ToList();
             for(int i=0; i<kb.Count; i++)

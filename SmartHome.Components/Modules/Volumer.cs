@@ -13,7 +13,7 @@ namespace SmartHome.Components.Modules
 
         private int MaxVolume { get; set; }
 
-        public Volumer(int minVolume = 0, int maxVolume = 100)
+        public Volumer(int curVolume = 50, int minVolume = 0, int maxVolume = 100)
         {
             if (minVolume < maxVolume)
             {
@@ -34,33 +34,27 @@ namespace SmartHome.Components.Modules
                 {
                     this.MaxVolume = 100;
                 }
+
+                if (curVolume >= minVolume && curVolume <= maxVolume)
+                {
+                    this.Volume = curVolume;
+                }
+                else
+                {
+                    this.Volume = (this.MinVolume + this.MaxVolume) / 2;
+                }
             }
             else
             {
                 this.MinVolume = 0;
                 this.MaxVolume = 100;
-            }
-        }
-
-        public void VolumeUp()
-        {
-            if(this.Volume<100)
-            {
-                this.Volume++;
-            }
-        }
-
-        public void VolumeDown()
-        {
-            if(this.Volume>0)
-            {
-                this.Volume--;
+                this.Volume = (this.MinVolume + this.MaxVolume) / 2;
             }
         }
 
         public bool SetVolume(int volume)
         {
-            if(volume>=this.MinVolume && volume<=this.MaxVolume)
+            if (volume >= this.MinVolume && volume <= this.MaxVolume)
             {
                 this.Volume = volume;
                 return true;
@@ -74,6 +68,16 @@ namespace SmartHome.Components.Modules
         public int GetCurrentVolume()
         {
             return this.Volume;
+        }
+
+        public int GetMinVolume()
+        {
+            return this.MinVolume;
+        }
+
+        public int GetMaxVolume()
+        {
+            return this.MaxVolume;
         }
     }
 }
