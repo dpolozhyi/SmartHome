@@ -2,6 +2,6 @@
 {
     public interface IThing
     {
-        string Location { get; set; }
+        string Location { get; }
     }
 }

@@ -8,6 +8,14 @@ namespace SmartHome.DAL.Interfaces
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> Get();
+        IQueryable<T> Get();
+
+        void Insert(T entity);
+
+        void Update(T entity, Guid id);
+
+        void Delete(Guid id);
+
+        void Save();
     }
 }

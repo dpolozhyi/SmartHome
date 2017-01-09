@@ -2,8 +2,8 @@
 
 namespace SmartHome.BL.Interfaces
 {
-    public interface IDeviceFactory<T> where T : Component
+    public interface IDeviceFactory
     {
-        T Create(string name, string location);
+        T Create<T>(string name, string location) where T : Component;
     }
 }

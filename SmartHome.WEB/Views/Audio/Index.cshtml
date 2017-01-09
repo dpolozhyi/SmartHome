@@ -1,0 +1,74 @@
+﻿@model List<SmartHome.BL.DTO.AudioViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Audio Devices</h2>
+
+<div class="devices">
+
+    @foreach (var b in Model)
+    {
+        <div class="item">
+            <div class="item-info">
+                <p>
+                    <h5>@b.Name</h5>
+                    <div class="onoffswitch">
+                        @if (b.Condition)
+                        {
+                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" checked>
+                        }
+                        else
+                        {
+                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox">
+                        }
+                        <label class="onoffswitch-label" for="myonoffswitch">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                    <br />
+                    Type : @b.TypeName<br />
+                    Location : @b.Location<br />
+                    Volume : @b.Volume<br />
+                    Volume Range : @b.MinVolume - @b.MaxVolume<br />
+                    <button type="submit" class="btn btn-info" onclick="editItem('@b.Id.ToString()', '@Url.Action("Edit", "Audio")')">Edit</button>
+                    <button type="submit" class="btn btn-danger" onclick="deleteItem('@b.Id.ToString()', '@b.Name', '@Url.Action("Delete", "Audio")')">Delete</button>
+                </p>
+            </div>
+        </div>
+    }
+
+</div>
+
+<button type="submit" class="btn btn-success" onclick="redirect('@Url.Action("Create", "Audio")')">Create</button>
+
+@section scripts{
+    <script>
+        function deleteItem(id, name, url) {
+            if (confirm("Are you sure you want delete audio device " + name)) {
+                window.location = url + "/" + id;
+            }
+        };
+
+        function redirect(url) {
+            window.location = url;
+        };
+
+        function editItem(id, url) {
+            window.location = url + "/" + id;
+        };
+
+        window.onload = function loadRange(minValue, maxValue, current) {
+            var elem = document.querySelector('.js-check-change');
+            var init = new Powerange(elem, { min: 16, max: 256, start: 128 });
+        };
+
+        function displayChange() {
+            var changeInput = document.querySelector('.js-check-change');
+            document.getElementById('js-display-change').innerHTML = changeInput.value;
+        };
+    </script>
+}

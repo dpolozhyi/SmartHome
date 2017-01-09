@@ -4,11 +4,11 @@ namespace SmartHome.Components.Components
 {
     public abstract class AudioComponent : Component, IThing
     {
-        protected ISwitchable Switcher { get; private set; }
+        public ISwitchable Switcher { get; private set; }
 
-        protected ISoundable Volumer { get; private set; }
+        public ISoundable Volumer { get; private set; }
 
-        public string Location { get; set; }
+        public string Location { get; private set; }
 
         public AudioComponent(string name, string location, ISwitchable switcher, ISoundable volumer):base(name)
         {

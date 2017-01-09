@@ -1,10 +1,11 @@
 ﻿using SmartHome.Components.Interfaces;
+using System;
 
 namespace SmartHome.Components.Components
 {
-    public abstract class Component : IComponent
+    public abstract class Component : IComponent, IEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Name { get; set; }
 

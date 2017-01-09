@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using SmartHome.BL.Automapper;
 
 [assembly: OwinStartupAttribute(typeof(SmartHome.WEB.Startup))]
 namespace SmartHome.WEB
@@ -8,7 +9,7 @@ namespace SmartHome.WEB
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            AutoMapperConfig.Configure();
         }
     }
 }

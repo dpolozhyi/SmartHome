@@ -2,12 +2,12 @@
 {
     public interface ISoundable
     {
-        void VolumeUp();
-
-        void VolumeDown();
-
         bool SetVolume(int volume);
 
         int GetCurrentVolume();
+
+        int GetMinVolume();
+
+        int GetMaxVolume();
     }
 }
