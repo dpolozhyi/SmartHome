@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace SmartHome.BL.DTO
 {
-    public class BoilerViewModel
+    public class HeatViewModel
     {
         public Guid Id { get; set; }
+
+        public Type Type { get; set; }
 
         public string Name { get; set; }
 
@@ -17,5 +19,9 @@ namespace SmartHome.BL.DTO
         public bool Condition { get; set; }
 
         public int Temperature { get; set; }
+
+        public int MinTemperature { get; set; }
+
+        public int MaxTemperature { get; set; }
     }
 }

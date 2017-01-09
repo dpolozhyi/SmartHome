@@ -9,6 +9,16 @@ namespace SmartHome.Components.Modules
 
         protected bool Condition { get; set; }
 
+        public Switcher() : this(false)
+        {
+
+        }
+
+        public Switcher(bool condition)
+        {
+            this.Condition = condition;
+        }
+
         public void SwitchOn()
         {
             this.Condition = true;
