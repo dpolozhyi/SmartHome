@@ -5,5 +5,9 @@
         bool SetTemperature(int degrees);
 
         int GetCurrentTemperature();
+
+        int GetMinTemperature();
+
+        int GetMaxTemperature();
     }
 }

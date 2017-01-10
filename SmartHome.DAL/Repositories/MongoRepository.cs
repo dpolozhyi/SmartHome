@@ -6,6 +6,7 @@ using SmartHome.Components.Components;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using System;
+using System.Configuration;
 
 namespace SmartHome.DAL.Repositories
 {
@@ -20,8 +21,13 @@ namespace SmartHome.DAL.Repositories
         public MongoRepository(MongoContext context)
         {
             this.context = context;
-            db = context.GetDB("smarthome");
-            collection = db.GetCollection<T>("devices");
+            db = context.GetDB(this.GetAppSetting("DbName"));
+            collection = db.GetCollection<T>(this.GetAppSetting("DevicesCollection"));
+        }
+
+        public string GetAppSetting(string key)
+        {
+            return ConfigurationManager.AppSettings[key];
         }
 
         public IQueryable<T> Get()

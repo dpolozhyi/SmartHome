@@ -13,48 +13,19 @@ namespace SmartHome.Components.Modules
 
         private int MaxBrightness { get; set; }
 
-        public Brighter(int minBrightness = 0, int maxBrightness = 100)
+        public Brighter(int curBrightness = 50, int minBrightness = 0, int maxBrightness = 100)
         {
-            if (minBrightness < maxBrightness)
+            if (curBrightness >= minBrightness && curBrightness <= maxBrightness)
             {
-                if (minBrightness >= 0)
-                {
-                    this.MinBrightness = minBrightness;
-                }
-                else
-                {
-                    this.MinBrightness = 0;
-                }
-
-                if (maxBrightness <= 100)
-                {
-                    this.MaxBrightness = maxBrightness;
-                }
-                else
-                {
-                    this.MaxBrightness = 100;
-                }
-            }
-            else
-            {
-                this.MinBrightness = 0;
-                this.MaxBrightness = 100;
+                this.MinBrightness = minBrightness;
+                this.MaxBrightness = maxBrightness;
+                this.Brightness = curBrightness;
             }
         }
-        public void BrightnessUp()
+        
+        public int GetCurrentBrightness()
         {
-            if (this.Brightness < this.MaxBrightness)
-            {
-                this.Brightness++;
-            }
-        }
-
-        public void BrightnessDown()
-        {
-            if (this.Brightness > this.MinBrightness)
-            {
-                this.Brightness--;
-            }
+            return this.Brightness;
         }
 
         public bool SetBrightness(int brightness)
@@ -68,6 +39,16 @@ namespace SmartHome.Components.Modules
             {
                 return false;
             }
+        }
+
+        public int GetMinBrightness()
+        {
+            return this.MinBrightness;
+        }
+
+        public int GetMaxBrightness()
+        {
+            return this.MaxBrightness;
         }
     }
 }

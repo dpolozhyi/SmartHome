@@ -11,21 +11,6 @@ namespace SmartHome.WEB.Controllers
     {
         public ActionResult Index()
         {
-            BoilerService bs = new BoilerService();
-            return View(bs.GetAll());
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

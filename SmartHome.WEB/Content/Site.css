@@ -1,4 +1,9 @@
-﻿body {
+﻿@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -7,6 +12,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    font-family:Roboto;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +27,81 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.onoffswitch {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #b4eeb4; color: #666;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 18px; margin: 6px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 56px;
+    border: 2px solid #999999; border-radius: 20px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+.devices{
+    font-family:Roboto;
+    font-size:16px;
+    color:green;
+    display:inline-block;
+}
+
+.item{
+    font-family:Roboto;
+    font-size:16px;
+    color:green;
+    border:2px solid green;
+    border-radius : 5px;
+    margin:10px 20px 10px 0px;
+    display:inline-block;
+}
+
+.item-info{
+    margin:10px;
+}
+
+.item-info h5{
+    font-size:20px;
+}
+
+.body-content button{
+    min-width:100px;
+    padding:5px 20px;
+    margin:0px 0px 5px;
 }
