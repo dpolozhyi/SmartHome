@@ -11,21 +11,25 @@ namespace SmartHome.Components.Modules
 
         private int CurrentChannel { get; set; }
 
-        protected ICollection<string> Channels { get; set; }
+        protected IEnumerable<string> Channels { get; set; }
 
         public Channeler()
         {
             
         }
 
-        public Channeler(ICollection<string> channels)
+        public Channeler(IEnumerable<string> channels, string currentChannel)
         {
             this.Channels = channels;
+            if(this.Channels.Contains(currentChannel))
+            {
+                this.CurrentChannel = this.Channels.ToList().IndexOf(currentChannel);
+            }
         }
 
         public void NextChannel()
         {
-            if(this.CurrentChannel < this.Channels.Count-1)
+            if(this.CurrentChannel < this.Channels.Count()-1)
             {
                 this.CurrentChannel++;
             }
@@ -60,6 +64,11 @@ namespace SmartHome.Components.Modules
         public IEnumerable<string> GetChannelsList()
         {
             return this.Channels;
+        }
+
+        public void SetChannelsList(IEnumerable<string> channelsList)
+        {
+            this.Channels = channelsList;
         }
     }
 }

@@ -13,5 +13,7 @@ namespace SmartHome.Components.Interfaces
         string GetCurrentChannel();
 
         IEnumerable<string> GetChannelsList();
+
+        void SetChannelsList(IEnumerable<string> channelsList);
     }
 }

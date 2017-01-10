@@ -2,10 +2,12 @@
 {
     public interface IBrightable
     {
-        void BrightnessUp();
-
-        void BrightnessDown();
-
         bool SetBrightness(int brightness);
+
+        int GetCurrentBrightness();
+
+        int GetMinBrightness();
+
+        int GetMaxBrightness();
     }
 }

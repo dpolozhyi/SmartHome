@@ -1,0 +1,73 @@
+﻿@model List<SmartHome.BL.DTO.MediaViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Media Devices</h2>
+
+<div class="devices">
+
+    @foreach (var media in Model)
+    {
+        <div class="item">
+            <div class="item-info">
+                <p>
+                    <h5>@media.Name</h5>
+                    <div class="onoffswitch">
+                        @if (media.Condition)
+                        {
+                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" checked>
+                        }
+                        else
+                        {
+                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox">
+                        }
+                        <label class="onoffswitch-label" for="myonoffswitch">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                    <br />
+                    Type : @media.TypeName<br />
+                    Location : @media.Location<br />
+                    Current Channel : @media.CurrentChannel<br />
+                    <label for="channels-list">Channels List: </label>
+                    <select id="channels-list">
+                        @foreach (var channel in media.Channels)
+                        {
+                            <option value="@channel" name="CurrentChannel">@channel</option>
+                        }
+                    </select><br />
+                    Volume : @media.Volume<br />
+                    Volume Range : @media.MinVolume - @media.MaxVolume<br />
+                    Brightness : @media.Brightness<br />
+                    Brightness Range : @media.MinBrightness - @media.MaxBrightness<br /><hr />
+                    <button type="submit" class="btn btn-info" onclick="editItem('@media.Id.ToString()', '@Url.Action("Edit", "Media")')">Edit</button>
+                    <button type="submit" class="btn btn-danger" onclick="deleteItem('@media.Id.ToString()', '@media.Name', '@Url.Action("Delete", "Media")')">Delete</button>
+                </p>
+            </div>
+        </div>
+    }
+</div>
+<button type="submit" class="btn btn-success" onclick="redirect('@Url.Action("Create", "Media")')">Create</button>
+
+
+@section scripts{
+    <script>
+        function deleteItem(id, name, url) {
+            if (confirm("Are you sure you want delete media device : " + name)) {
+                window.location = url + "/" + id;
+            }
+        };
+
+        function redirect(url) {
+            window.location = url;
+        }
+
+        function editItem(id, url) {
+            window.location = url + "/" + id;
+        };
+    </script>
+}

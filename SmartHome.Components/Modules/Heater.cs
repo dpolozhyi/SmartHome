@@ -15,40 +15,11 @@ namespace SmartHome.Components.Modules
 
         public Heater(int curTemperature = 45, int minTemperature = 30, int maxTemperature = 60)
         {
-            if (minTemperature < maxTemperature)
+            if (curTemperature >= minTemperature && curTemperature <= maxTemperature)
             {
-                if (minTemperature >= 30)
-                {
-                    this.MinTemperature = minTemperature;
-                }
-                else
-                {
-                    this.MinTemperature = 30;
-                }
-
-                if (maxTemperature <= 100)
-                {
-                    this.MaxTemperature = maxTemperature;
-                }
-                else
-                {
-                    this.MaxTemperature = 60;
-                }
-
-                if (curTemperature < maxTemperature && curTemperature > minTemperature)
-                {
-                    this.Temperature = curTemperature;
-                }
-                else
-                {
-                    this.Temperature = 45;
-                }
-            }
-            else
-            {
-                this.MinTemperature = 30;
-                this.MaxTemperature = 60;
-                this.Temperature = 45;
+                this.MinTemperature = minTemperature;
+                this.MaxTemperature = maxTemperature;
+                this.Temperature = curTemperature;
             }
         }
 

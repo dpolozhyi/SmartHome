@@ -1,4 +1,4 @@
-﻿@model SmartHome.BL.DTO.AudioViewModel
+﻿@model SmartHome.BL.DTO.MediaViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>@Model.Name</h4>
         <hr />
@@ -43,6 +43,43 @@
             </div>
         </div>
 
+        @{
+            List<SelectListItem> channelsListItems = new List<SelectListItem>();
+            try
+            {
+                if (Model.Channels != null)
+                {
+                    foreach (var channel in Model.Channels)
+                    {
+                        channelsListItems.Add(new SelectListItem
+                        {
+                            Text = channel,
+                            Value = channel
+                        });
+                    }
+                }
+            }
+            catch(NullReferenceException ex)
+            {
+                
+            }
+        }
+        <div class="form-group">
+            @Html.LabelFor(model => model.CurrentChannel, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CurrentChannel, channelsListItems)
+                @Html.ValidationMessageFor(model => model.CurrentChannel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Channels, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Channels, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Channels, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.Volume, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -68,12 +105,36 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Brightness, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Brightness, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Brightness, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MinBrightness, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MinBrightness, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MinBrightness, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaxBrightness, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaxBrightness, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaxBrightness, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
-}
+            }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
