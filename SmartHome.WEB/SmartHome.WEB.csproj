@@ -195,6 +195,7 @@
     <Compile Include="Controllers\AudioController.cs" />
     <Compile Include="Controllers\HeatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,6 +253,9 @@
     <Content Include="Views\Audio\Index.cshtml" />
     <Content Include="Views\Audio\Create.cshtml" />
     <Content Include="Views\Audio\Edit.cshtml" />
+    <Content Include="Views\Media\Index.cshtml" />
+    <Content Include="Views\Media\Edit.cshtml" />
+    <Content Include="Views\Media\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

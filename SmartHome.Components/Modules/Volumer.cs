@@ -35,7 +35,7 @@ namespace SmartHome.Components.Modules
                     this.MaxVolume = 100;
                 }
 
-                if (curVolume >= minVolume && curVolume <= maxVolume)
+                if (curVolume >= this.MinVolume && curVolume <= this.MaxVolume)
                 {
                     this.Volume = curVolume;
                 }

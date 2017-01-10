@@ -8,35 +8,44 @@ using System.Web.Mvc;
 
 namespace SmartHome.WEB.Controllers
 {
-    public class AudioController : Controller
+    public class MediaController : Controller
     {
-        private AudioService audioService;
+        private MediaService mediaService;
 
-        public AudioController()
+        public MediaController()
         {
-            this.audioService = new AudioService();
+            this.mediaService = new MediaService();
         }
 
+        // GET: Media
         public ActionResult Index()
         {
-            return View(audioService.GetAll());
+            return View(mediaService.GetAll());
         }
 
-        public ActionResult Details(Guid id)
+        [HttpPost]
+        public ActionResult Index(MediaViewModel mediaDevice)
+        {
+
+            return View(mediaService.GetAll());
+        }
+
+        // GET: Media/Details/5
+        public ActionResult Details(int id)
         {
             return View();
         }
 
+        // GET: Media/Create
         public ActionResult Create()
         {
-            ViewBag.Types = new SelectList(audioService.GetTypesList());
             return View();
         }
 
+        // POST: Media/Create
         [HttpPost]
-        public ActionResult Create(AudioViewModel audioDevice)
+        public ActionResult Create(MediaViewModel mediaDevice)
         {
-            ViewBag.Types = new SelectList(audioService.GetTypesList());
             if (!ModelState.IsValid)
             {
                 return View();
@@ -44,7 +53,8 @@ namespace SmartHome.WEB.Controllers
 
             try
             {
-                audioService.AddItem(audioDevice);
+                mediaService.AddItem(mediaDevice);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -53,23 +63,26 @@ namespace SmartHome.WEB.Controllers
             }
         }
 
+        // GET: Media/Edit/5
         public ActionResult Edit(Guid id)
         {
-            AudioViewModel audioDevice = audioService.GetAll().First(n => n.Id == id);
-            return View(audioDevice);
+            MediaViewModel mediaDevice = mediaService.GetAll().First(n => n.Id == id);
+            ViewBag.Channels = mediaDevice.Channels;
+            return View(mediaDevice);
         }
 
+        // POST: Media/Edit/5
         [HttpPost]
-        public ActionResult Edit(AudioViewModel audioDevice)
+        public ActionResult Edit(Guid id, MediaViewModel mediaDevice)
         {
             if (!ModelState.IsValid)
             {
-                return View(audioDevice);
+                return View(mediaDevice);
             }
 
             try
             {
-                audioService.EditItem(audioDevice);
+                mediaService.EditItem(mediaDevice);
 
                 return RedirectToAction("Index");
             }
@@ -79,14 +92,16 @@ namespace SmartHome.WEB.Controllers
             }
         }
 
+        // GET: Media/Delete/5
         public ActionResult Delete(Guid id)
         {
-            audioService.DeleteItem(id);
+            mediaService.DeleteItem(id);
             return RedirectToAction("Index");
         }
 
+        // POST: Media/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {

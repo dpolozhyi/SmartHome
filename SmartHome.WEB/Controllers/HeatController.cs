@@ -10,33 +10,39 @@ namespace SmartHome.WEB.Controllers
 {
     public class HeatController : Controller
     {
-        // GET: Boiler
-        public ActionResult Index()
+        private HeatService heatService;
+
+        public HeatController()
         {
-            HeatService bs = new HeatService();
-            return View(bs.GetAll());
+            this.heatService = new HeatService();
         }
 
-        // GET: Boiler/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Index()
+        {
+            return View(heatService.GetAll());
+        }
+
+        public ActionResult Details(Guid id)
         {
             return View();
         }
 
-        // GET: Boiler/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Boiler/Create
         [HttpPost]
-        public ActionResult Create(HeatViewModel boiler)
+        public ActionResult Create(HeatViewModel heatDevice)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
             try
             {
-                HeatService bs = new HeatService();
-                bs.AddItem(boiler);
+                heatService.AddItem(heatDevice);
 
                 return RedirectToAction("Index");
             }
@@ -46,22 +52,23 @@ namespace SmartHome.WEB.Controllers
             }
         }
 
-        // GET: Boiler/Edit/5
         public ActionResult Edit(Guid id)
         {
-            HeatService bs = new HeatService();
-            HeatViewModel boiler = bs.GetAll().First(n => n.Id == id);
-            return View(boiler);
+            HeatViewModel heatDevice = heatService.GetAll().First(n => n.Id == id);
+            return View(heatDevice);
         }
 
-        // POST: Boiler/Edit/5
         [HttpPost]
-        public ActionResult Edit(Guid id, HeatViewModel boiler)
+        public ActionResult Edit(Guid id, HeatViewModel heatDevice)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(heatDevice);
+            }
+
             try
             {
-                HeatService bs = new HeatService();
-                bs.EditItem(boiler);
+                heatService.EditItem(heatDevice);
 
                 return RedirectToAction("Index");
             }
@@ -71,17 +78,14 @@ namespace SmartHome.WEB.Controllers
             }
         }
 
-        // GET: Boiler/Delete/5
         public ActionResult Delete(Guid id)
         {
-            HeatService bs = new HeatService();
-            bs.DeleteItem(id);
+            heatService.DeleteItem(id);
             return RedirectToAction("Index");
         }
 
-        // POST: Boiler/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Guid id, FormCollection collection)
         {
             try
             {
